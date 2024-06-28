@@ -1,0 +1,40 @@
+
+# Custom Alacritty Colors
+# Default colors
+[colors.primary]
+background  = '#15141b'
+foreground  = '#edecee'
+
+# Cursor colors 
+[colors.cursor]
+cursor: '#a277ff'
+
+# Normal colors
+[colors.normal]
+black   = '#110f18'
+red     = '#ff6767'
+green   = '#61ffca'
+yellow  = '#ffca85'
+blue    = '#a277ff'
+magenta = '#a277ff'
+cyan    = '#61ffca'
+white   = '#edecee'
+
+# Bright colors
+[colors.bright]
+black   = '#4d4d4d'
+red     = '#ff6767'
+green   = '#61ffca'
+yellow  = '#ffca85'
+blue    = '#a277ff'
+magenta = '#a277ff'
+cyan    = '#61ffca'
+white   = '#edecee'
+
+[[colors.indexed_colors]]
+index = 16
+color = '#d18616'
+
+[[colors.indexed_colors]]
+index = 17
+color = '#ffa198'
