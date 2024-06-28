@@ -26,7 +26,13 @@ The following packages should be install for a full-configuration
 
 * python-lsp, recommend install by apt, brew, pip, or conda (pyright is better)
 * [stowm dotfiles manager](https://learn.typecraft.dev/tutorial/never-lose-your-configs-again/) 
+* [npm for pyright](https://github.com/nvm-sh/nvm)
+* make ues specific gcc: 
+```
+make CMAKE_BUILD_TYPE=Release CC=gcc CPP=g++- CXX=g++ LD=g++
+```
+
+
 
 ## Tutorials
 * `*` and `#` will highlight the current word and jump to the next previous one.
-*
