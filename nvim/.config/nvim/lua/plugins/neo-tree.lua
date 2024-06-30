@@ -2,6 +2,7 @@
 local spec = {
   {
     "nvim-neo-tree/neo-tree.nvim",
+    -- disable=true,
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",

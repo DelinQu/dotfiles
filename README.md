@@ -33,7 +33,5 @@ make CMAKE_BUILD_TYPE=Release CC=gcc CPP=g++- CXX=g++ LD=g++
 CC=gcc nvim
 ```
 
-
-
 ## Tutorials
 * `*` and `#` will highlight the current word and jump to the next previous one.
