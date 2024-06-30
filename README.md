@@ -25,11 +25,12 @@ The following packages should be install for a full-configuration
     * [typecraft](https://www.youtube.com/watch?v=niuOc02Rvrc)
 
 * python-lsp, recommend install by apt, brew, pip, or conda (pyright is better)
-* [stowm dotfiles manager](https://learn.typecraft.dev/tutorial/never-lose-your-configs-again/) 
+* [stowm dotfiles manager](https://learn.typecraft.dev/tutorial/never-lose-your-configs-again/) and [Using GNU Stow to Manage Symbolic Links for Your Dotfiles](https://systemcrafters.net/managing-your-dotfiles/using-gnu-stow/)
 * [npm for pyright](https://github.com/nvm-sh/nvm)
 * make ues specific gcc: 
 ```
 make CMAKE_BUILD_TYPE=Release CC=gcc CPP=g++- CXX=g++ LD=g++
+CC=gcc nvim
 ```
 
 

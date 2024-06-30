@@ -22,7 +22,7 @@ local spec = {
       suggestion = {
         auto_trigger = true,
         keymap = {
-          accept = "<S-Tab>",
+          accept = "<C-Tab>",
         }
       }
     }
