@@ -82,8 +82,8 @@ local spec = {
           gitsigns.blame_line { full = true }
         end, { desc = "Blame current line" })
 
-        map("n", "<leader>gd", gitsigns.diffthis, { desc = "Diff against index" })
-        map("n", "<leader>gD", function()
+        map("n", "<leader>hd", gitsigns.diffthis, { desc = "Diff against index" })
+        map("n", "<leader>hD", function()
           gitsigns.diffthis "~"
         end, { desc = "Diff against previous commit" })
 
@@ -91,7 +91,7 @@ local spec = {
         map("n", "<leader>td", gitsigns.toggle_deleted, { desc = "Toggle deleted lines" })
 
         -- Text object
-        map({ "o", "x" }, "<leader>gs", ":<C-U>Gitsigns select_hunk<CR>", { desc = "Select hunk" })
+        map({ "o", "x" }, "<leader>S", ":<C-U>Gitsigns select_hunk<CR>", { desc = "Select hunk" })
       end,
     }
   end,

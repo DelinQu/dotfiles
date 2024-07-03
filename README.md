@@ -2,7 +2,7 @@
 A custom config repo containning all my mac alacritty, nvim, tmux etc. configurations.
 
 ```bash
-git clone --depth 1 https://github.com/DelinQu/.config.git
+git clone --depth 1 https://github.com/DelinQu/dotfiles ~/.dotfiles
 ```
 
 ## Update Logs
