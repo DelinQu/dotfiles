@@ -2,7 +2,9 @@
 local spec = {
   {
     "nosduco/remote-sshfs.nvim",
+    enabled = false,
     dependencies = { "nvim-telescope/telescope.nvim" },
+
     opts = {},
     mounts = {
       base_dir = vim.fn.expand "$HOME" .. "/.sshfs/",

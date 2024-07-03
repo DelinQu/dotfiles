@@ -27,5 +27,9 @@ map("n", "a", "ggVG", { desc = "Select all" })
 
 
 -- nvimtree -> neo-tree
-map("n", "<C-n>", "<cmd>Neotree close<CR>", { desc = "nvimtree close window" })
+map("n", "<C-n>", "<cmd>Neotree close<CR>", { desc = "neotree close window" })
 map("n", "<leader>e", "<cmd>Neotree focus<CR>", { desc = "neotree focus window" })
+
+-- right vim-tree
+map("n", "<C-m>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
+map("n", "<leader>i", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })

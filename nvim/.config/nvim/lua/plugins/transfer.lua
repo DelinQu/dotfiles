@@ -2,6 +2,7 @@
 local spec = {
   {
     "coffebar/transfer.nvim",
+    enabled = false,
     opts = {},
     event = "VeryLazy",
     cmd = { "TransferInit", "DiffRemote", "TransferUpload", "TransferDownload", "TransferDirDiff", "TransferRepeat" },
