@@ -21,7 +21,7 @@ local spec = {
     },
     keys = {
       {
-        "<leader>td",
+        "<leader>ft",
         "<cmd>TodoTelescope<CR>",
         desc = "Search through all project todos with Telescope",
       },
