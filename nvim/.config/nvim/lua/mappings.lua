@@ -16,7 +16,10 @@ map("n", "<leader>gr", "<cmd>Telescope lsp_references<cr>", { desc = "LSP Refere
 
 -- Terminal
 map("n", "<leader>tm", "<cmd>Telescope terms<cr>", { desc = "LSP Terminal Buffers" })
-
+vim.keymap.del('n', '<leader>h')
+map("n", "<leader>H", function()
+  require("nvchad.term").new { pos = "sp" }
+end, { desc = "terminal new horizontal term" })
 
 -- URL-Open mappings
 map("n", "gx", "<cmd>:URLOpenUnderCursor<cr>", { desc = "Open URL under cursor" })

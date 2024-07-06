@@ -35,3 +35,5 @@ CC=gcc nvim
 
 ## Tutorials
 * `*` and `#` will highlight the current word and jump to the next previous one.
+* copy/delete word under cursor in Vim: `yw` / `byw`
+

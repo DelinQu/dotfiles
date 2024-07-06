@@ -1,16 +1,3 @@
--- Config for diffview.nvim
---- This will be load once gitsigns.nvim is loaded (when in a git repo)
---- To override the defaults, just define a block of
---- ```
---- {
----   "sindrets/diffview.nvim",
----   opts = function(_, opts)
----     -- Your config in here
----     return the new table containing the opts
----   end
---- }
---- ```
-
 ---@type NvPluginSpec
 local spec = {
   "lewis6991/gitsigns.nvim",
@@ -48,23 +35,6 @@ local spec = {
           vim.keymap.set(mode, l, r, opts)
         end
 
-        -- Navigation
-        map("n", "g]", function()
-          if vim.wo.diff then
-            vim.cmd.normal { "g]", bang = true }
-          else
-            gitsigns.nav_hunk "next"
-          end
-        end)
-
-        map("n", "g[", function()
-          if vim.wo.diff then
-            vim.cmd.normal { "[", bang = true }
-          else
-            gitsigns.nav_hunk "prev"
-          end
-        end)
-
         -- Actions
         map("n", "<leader>hs", gitsigns.stage_hunk, { desc = "Stage current hunk" })
         map("n", "<leader>hr", gitsigns.reset_hunk, { desc = "Reset current hunk" })
@@ -86,12 +56,6 @@ local spec = {
         map("n", "<leader>hD", function()
           gitsigns.diffthis "~"
         end, { desc = "Diff against previous commit" })
-
-        map("n", "<leader>tb", gitsigns.toggle_current_line_blame, { desc = "Toggle current line blame" })
-        map("n", "<leader>td", gitsigns.toggle_deleted, { desc = "Toggle deleted lines" })
-
-        -- Text object
-        map({ "o", "x" }, "<leader>S", ":<C-U>Gitsigns select_hunk<CR>", { desc = "Select hunk" })
       end,
     }
   end,
