@@ -25,6 +25,22 @@ local spec = {
         "<cmd>TodoTelescope<CR>",
         desc = "Search through all project todos with Telescope",
       },
+      {
+        -- "n",
+        "]t",
+        function()
+          require("todo-comments").jump_next()
+        end,
+        desc = "Next todo comment",
+      },
+      {
+        -- "n",
+        "[t",
+        function()
+          require("todo-comments").jump_prev()
+        end,
+        desc = "Previous todo comment",
+      },
     },
   },
 }

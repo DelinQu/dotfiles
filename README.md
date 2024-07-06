@@ -34,6 +34,9 @@ CC=gcc nvim
 ```
 
 ## Tutorials
-* `*` and `#` will highlight the current word and jump to the next previous one.
-* copy/delete word under cursor in Vim: `yw` / `byw`
-
+* `*` and `#`: highlight the current word and jump to the next previous one
+* `yw` and `byw`: copy/delete word under cursor in Vim
+* `[c` and `]c`: jump to the previous and next difference in diff   
+* `do` and `dp`: receive and push curent difference to other view 
+* `:windo diffthis`: diff current buffer views
+* `:diffsplit`: diff current buffer view with `$1` files

@@ -13,6 +13,43 @@ local spec = {
     event = "VeryLazy",
     config = function()
       require("neo-tree").setup {
+        commands = {
+          copy_selector = function(state)
+            local node = state.tree:get_node()
+            local filepath = node:get_id()
+            local filename = node.name
+            local modify = vim.fn.fnamemodify
+            local vals = {
+              ["PATH (CWD)"] = modify(filepath, ":."),
+              -- ["PATH (HOME)"] = modify(filepath, ":~"),
+              ["PATH"] = filepath,
+              ["BASENAME"] = modify(filename, ":r"),
+              -- ["FILENAME"] = filename,
+              -- ["EXTENSION"] = modify(filename, ":e"),
+              -- ["URI"] = vim.uri_from_fname(filepath),
+            }
+            local options = vim.tbl_filter(function(val)
+              return vals[val] ~= ""
+            end, vim.tbl_keys(vals))
+            if vim.tbl_isempty(options) then
+              vim.notify("No values to copy", vim.log.levels.WARN)
+              return
+            end
+            table.sort(options)
+            vim.ui.select(options, {
+              prompt = "Choose to copy to clipboard:",
+              format_item = function(item)
+                return ("%s: %s"):format(item, vals[item])
+              end,
+            }, function(choice)
+              local result = vals[choice]
+              if result then
+                vim.notify(("Copied: `%s`"):format(result))
+                vim.fn.setreg("+", result)
+              end
+            end)
+          end,
+        },
         default_component_configs = {
           git_status = {
             symbols = {
@@ -39,43 +76,7 @@ local spec = {
               ["[g"] = "prev_git_modified",
               ["]g"] = "next_git_modified",
               -- ['<key>'] = function(state) ... end,
-              ["Y"] = function(state)
-                -- NeoTree is based on [NuiTree](https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/tree)
-                -- The node is based on [NuiNode](https://github.com/MunifTanjim/nui.nvim/tree/main/lua/nui/tree#nuitreenode)
-                local node = state.tree:get_node()
-                local filepath = node:get_id()
-                local filename = node.name
-                local modify = vim.fn.fnamemodify
-                local results = {
-                  filepath,
-                  modify(filepath, ":."),
-                  -- modify(filepath, ":~"),
-                  filename,
-                  -- modify(filename, ":r"),
-                  -- modify(filename, ":e"),
-                }
-                vim.ui.select({
-                  "1. absolute path",
-                  "2. relative path",
-                  -- "path relative (home)",
-                  "3. filename",
-                  -- "filename w/o extension",
-                  -- "extension",
-                }, { prompt = "[Choose to copy]" }, function(choice)
-                  if choice then
-                    local i = tonumber(choice:sub(1, 1))
-                    if i then
-                      local result = results[i]
-                      vim.fn.setreg('"', result)
-                      vim.notify(" Copied: " .. result)
-                    else
-                      vim.notify " Invalid selection"
-                    end
-                  else
-                    vim.notify "Selection cancelled"
-                  end
-                end)
-              end,
+              ["Y"] = "copy_selector",
             },
           },
         },
