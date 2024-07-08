@@ -12,6 +12,7 @@ local spec = {
     },
     outline_window = {
       auto_jump = true,
+      auto_close = true,
     },
   },
   keys = { -- Example mapping to toggle outline
