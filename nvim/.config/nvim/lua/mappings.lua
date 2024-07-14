@@ -37,3 +37,6 @@ map("n", "<leader>e", "<cmd>Neotree focus<CR>", { desc = "neotree focus window" 
 -- right vim-tree
 map("n", "<C-m>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
 map("n", "<leader>I", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
+
+-- buffer
+map("n", "<leader>X", "<cmd>%bd<CR>", { desc = "delete all the Buffers" })
