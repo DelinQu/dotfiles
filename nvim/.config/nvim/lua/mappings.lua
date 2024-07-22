@@ -13,10 +13,9 @@ map("n", "<leader>gr", "<cmd>Telescope lsp_references<cr>", { desc = "LSP Refere
 --   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 -- end, { desc = "Toggle Inlay Hints" })
 
-
 -- Terminal
 map("n", "<leader>tm", "<cmd>Telescope terms<cr>", { desc = "LSP Terminal Buffers" })
-vim.keymap.del('n', '<leader>h')
+vim.keymap.del("n", "<leader>h")
 map("n", "<leader>H", function()
   require("nvchad.term").new { pos = "sp" }
 end, { desc = "terminal new horizontal term" })
@@ -24,10 +23,8 @@ end, { desc = "terminal new horizontal term" })
 -- URL-Open mappings
 map("n", "gx", "<cmd>:URLOpenUnderCursor<cr>", { desc = "Open URL under cursor" })
 
-
 -- ggVG to select all
 map("n", "a", "ggVG", { desc = "Select all" })
-
 
 -- nvimtree -> neo-tree
 map("n", "<C-n>", "<cmd>Neotree close<CR>", { desc = "neotree close window" })
@@ -40,3 +37,7 @@ map("n", "<leader>I", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window"
 
 -- buffer
 map("n", "<leader>X", "<cmd>%bd<CR>", { desc = "delete all the Buffers" })
+
+-- line start and end
+map({ "n", "v" }, "H", "^", { desc = "jump to the start for line" })
+map({ "n", "v" }, "L", "$", { desc = "jump to the end for line" })
