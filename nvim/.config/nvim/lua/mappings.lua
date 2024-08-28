@@ -20,6 +20,11 @@ map("n", "<leader>H", function()
   require("nvchad.term").new { pos = "sp" }
 end, { desc = "terminal new horizontal term" })
 
+map("n", "=", [[<cmd>vertical resize +2<cr>]], { desc = "make the window biger vertically" })
+map("n", "-", [[<cmd>vertical resize -2<cr>]], { desc = "make the window smaller vertically" })
+map("n", "+", [[<cmd>horizontal resize +2<cr>]], { desc = "make the window bigger horizontally by pressing shift and =" })
+map("n", "_", [[<cmd>horizontal resize -2<cr>]], { desc = "make the window smaller horizontally by pressing shift and -" })
+
 -- URL-Open mappings
 map("n", "gx", "<cmd>:URLOpenUnderCursor<cr>", { desc = "Open URL under cursor" })
 

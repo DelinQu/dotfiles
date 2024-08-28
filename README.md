@@ -34,6 +34,9 @@ CC=gcc nvim
 ```
 
 ## Tutorials
+❯ defaults write NSGlobalDomain InitalKeyRepeat -int 10
+❯ defaults write NSGlobalDomain KeyRepeat -int 1.0     
+
 * `*` and `#`: highlight the current word and jump to the next previous one
 * `yw` and `byw`: copy/delete word under cursor in Vim
 * `[c` and `]c`: jump to the previous and next difference in diff   
