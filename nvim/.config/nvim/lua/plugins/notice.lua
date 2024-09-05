@@ -24,11 +24,11 @@ local spec = {
             ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
           },
           signature = {
-            enabled = false
+            enabled = false,
           },
           hover = {
-            enabled = false
-          }
+            enabled = false,
+          },
         },
         -- you can enable a preset for easier configuration
         presets = {

@@ -100,7 +100,7 @@ multiplier = 1  # Default: 3
 
 # Normal font style
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }  # Default for Linux/BSD: "monospace", Regular
-# normal = { family = "MesloLGL Nerd Font", style = "Regular" }  # Default for Linux/BSD: "monospace", Regular
+# normal = { family = "MesloLGL Nerd Font", style = "Bold" }  # Default for Linux/BSD: "monospace", Regular
 
 # Bold font style
 bold = { style = "Bold" }  # Inherits family from normal, Default style: Bold
@@ -271,6 +271,20 @@ unfocused_hollow = true  # Default: true
 
 # Thickness of the cursor relative to the cell width
 thickness = 0.15  # Default: 0.15
+
+# for alacritty-cursor
+# # Set to false to disable completely
+# smooth_motion = true
+# # 0.0 = cursor is not moving, 1.0 = cursor moves instantly
+# smooth_motion_factor = 1.0
+# # 0.0 = broken, 1.0 = cursor shape is unaffected by movement
+# smooth_motion_spring = 0.5
+# # Limits how the cursor size may change
+# smooth_motion_max_stretch_x = 2.0
+# smooth_motion_max_stretch_y = 2.0
+# # Override "block" cursor if you don't like how it looks in this fork
+# # I prefer "underline"
+# block_replace_shape = "block"
 
 ############
 # TERMINAL #

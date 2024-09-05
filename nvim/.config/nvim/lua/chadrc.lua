@@ -51,7 +51,7 @@ M.term = {
     height = 0.5,
     col = 0.2,
     width = 0.6,
-    border = "single",
+    border = "rounded",
   },
   cmd = "neofetch",
 }
