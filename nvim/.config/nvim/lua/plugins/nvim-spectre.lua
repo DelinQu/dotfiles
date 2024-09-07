@@ -3,7 +3,7 @@ local spec = {
   "nvim-pack/nvim-spectre",
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {
-      is_insert_mode = true, -- start open panel on is_insert_mode
+      is_insert_mode = false, -- start open panel on is_insert_mode
   },
   keys = {
     { "<leader>S", '<cmd>lua require("spectre").toggle()<CR>', desc = "Toggle Spectre", mode = "n" },

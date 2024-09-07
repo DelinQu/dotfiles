@@ -7,6 +7,7 @@ local spec = {
         "~/projects/*",
         "~/.config/*",
         "~/code/*",
+        "~/.dotfiles/*",
       },
       dashboard_mode = true,
       last_session_on_startup = false,
