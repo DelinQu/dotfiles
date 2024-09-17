@@ -42,6 +42,9 @@ map("n", "gx", "<cmd>:URLOpenUnderCursor<cr>", { desc = "Open URL under cursor" 
 -- ggVG to select all
 map("n", "a", "ggVG", { desc = "Select all" })
 
+-- vv to enter muti-line visual mode
+-- map("n", "vv", "<C-v>", { desc = "Enter visual block mode" })
+
 -- nvimtree -> neo-tree
 map("n", "<C-n>", "<cmd>Neotree close<CR>", { desc = "neotree close window" })
 map("n", "<leader>e", "<cmd>Neotree focus<CR>", { desc = "neotree focus window" })

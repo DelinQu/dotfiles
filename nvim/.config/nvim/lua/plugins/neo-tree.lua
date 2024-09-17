@@ -14,40 +14,41 @@ local spec = {
     config = function()
       require("neo-tree").setup {
         commands = {
-          copy_selector = function(state)
+          copy_path = function(state)
+            -- code apapted from: https://github.com/ibhagwan/smartyank.nvim/blob/master/lua/smartyank/init.lua
             local node = state.tree:get_node()
-            local filepath = node:get_id()
-            local filename = node.name
-            local modify = vim.fn.fnamemodify
-            local vals = {
-              ["PATH (CWD)"] = modify(filepath, ":."),
-              -- ["PATH (HOME)"] = modify(filepath, ":~"),
-              ["PATH"] = filepath,
-              ["BASENAME"] = modify(filename, ":r"),
-              -- ["FILENAME"] = filename,
-              -- ["EXTENSION"] = modify(filename, ":e"),
-              -- ["URI"] = vim.uri_from_fname(filepath),
-            }
-            local options = vim.tbl_filter(function(val)
-              return vals[val] ~= ""
-            end, vim.tbl_keys(vals))
-            if vim.tbl_isempty(options) then
-              vim.notify("No values to copy", vim.log.levels.WARN)
+            if not node then
+              vim.notify("No node selected", vim.log.levels.ERROR)
               return
             end
-            table.sort(options)
-            vim.ui.select(options, {
-              prompt = "Choose to copy to clipboard:",
-              format_item = function(item)
-                return ("%s: %s"):format(item, vals[item])
-              end,
-            }, function(choice)
-              local result = vals[choice]
-              if result then
-                vim.notify(("Copied: `%s`"):format(result))
-                vim.fn.setreg("+", result)
-              end
-            end)
+
+            local file_path = node:get_id()
+            local filename = node.name
+            if not file_path then
+              vim.notify("🎃 Cannot retrieve file path", vim.log.levels.ERROR)
+              return
+            end
+
+            local yank_data = vim.fn.fnamemodify(file_path, ":.")
+            -- local yank_data = vim.fn.fnamemodify(file_path, ":~")
+
+            if vim.fn.has "clipboard" == 1 then
+              pcall(vim.fn.setreg, "+", yank_data)
+            elseif vim.env.SSH_CONNECTION then
+              local base64 = require("smartyank.base64").encode(yank_data)
+              local osc52str = string.format("\x1b]52;c;%s\x07", base64)
+              local bytes = vim.fn.chansend(vim.v.stderr, osc52str)
+              local msg = string.format("[smartyank] %d chars copied using OSC52 (%d bytes)", #yank_data, bytes)
+              vim.api.nvim_out_write(msg .. "\n")
+              -- vim.notify("Copied via OSC52 protocol", vim.log.levels.INFO)
+            elseif vim.env.TMUX then
+              local tmux_cmd = { "tmux", "set-buffer", yank_data }
+              vim.fn.system(tmux_cmd)
+              -- vim.notify("Copied to tmux buffer", vim.log.levels.INFO)
+            end
+
+            -- vim.notify(("🎃 Copied: %s"):format(yank_data), vim.log.levels.INFO)
+            vim.notify(("🎃 copied path of %s"):format(filename), vim.log.levels.INFO)
           end,
         },
         default_component_configs = {
@@ -76,7 +77,7 @@ local spec = {
               ["[g"] = "prev_git_modified",
               ["]g"] = "next_git_modified",
               -- ['<key>'] = function(state) ... end,
-              ["Y"] = "copy_selector",
+              ["Y"] = "copy_path",
             },
           },
         },
