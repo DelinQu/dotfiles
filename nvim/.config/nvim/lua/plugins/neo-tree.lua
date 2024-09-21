@@ -14,6 +14,17 @@ local spec = {
     config = function()
       require("neo-tree").setup {
         commands = {
+          sys_open = function(state)
+            local node = state.tree:get_node()
+            if not node then
+              vim.notify("No node selected", vim.log.levels.ERROR)
+              return
+            end
+            local _, err = vim.ui.open(node:get_id())
+            if err then
+              vim.notify.warn(err)
+            end
+          end,
           copy_path = function(state)
             -- code apapted from: https://github.com/ibhagwan/smartyank.nvim/blob/master/lua/smartyank/init.lua
             local node = state.tree:get_node()
@@ -78,6 +89,7 @@ local spec = {
               ["]g"] = "next_git_modified",
               -- ['<key>'] = function(state) ... end,
               ["Y"] = "copy_path",
+              ["o"] = "sys_open",
             },
           },
         },
