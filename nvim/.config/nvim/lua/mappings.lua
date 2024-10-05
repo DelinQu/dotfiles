@@ -21,8 +21,9 @@ map("n", "<leader>H", function()
   require("nvchad.term").new { pos = "sp" }
 end, { desc = "terminal new horizontal term" })
 
+-- adjust window size
 map("n", "<C-=>", [[<cmd>vertical resize +5<cr>]], { desc = "make the window biger vertically" })
-map("n", "<c-->", [[<cmd>vertical resize -5<cr>]], { desc = "make the window smaller vertically" })
+map("n", "<C-->", [[<cmd>vertical resize -5<cr>]], { desc = "make the window smaller vertically" })
 map(
   "n",
   "+",
@@ -35,6 +36,15 @@ map(
   [[<cmd>horizontal resize -2<cr>]],
   { desc = "make the window smaller horizontally by pressing shift and -" }
 )
+
+-- switch buffer with Shfit + Command + } or {
+map({ "i", "n" }, "<S-D-}>", function()
+  require("nvchad.tabufline").next()
+end, { desc = "Switch to next buffer" })
+
+map({ "i", "n" }, "<S-D-{>", function()
+  require("nvchad.tabufline").prev()
+end, { desc = "Switch to previous buffer" })
 
 -- URL-Open mappings
 map("n", "gx", "<cmd>:URLOpenUnderCursor<cr>", { desc = "Open URL under cursor" })

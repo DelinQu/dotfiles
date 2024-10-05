@@ -40,8 +40,8 @@ local spec = {
               return
             end
 
-            local yank_data = vim.fn.fnamemodify(file_path, ":.")
-            -- local yank_data = vim.fn.fnamemodify(file_path, ":~")
+            -- local yank_data = vim.fn.fnamemodify(file_path, ":.")
+            local yank_data = vim.fn.fnamemodify(file_path, ":~")
 
             if vim.fn.has "clipboard" == 1 then
               pcall(vim.fn.setreg, "+", yank_data)
