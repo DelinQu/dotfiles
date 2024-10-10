@@ -14,8 +14,6 @@ return {
   performance = {
     rtp = {
       disabled_plugins = {
-        -- "nvim-tree",
-        -- "nvimtree",
         "2html_plugin",
         "tohtml",
         "getscript",

@@ -8,7 +8,7 @@ local spec = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",
-      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+      "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     },
     event = "VeryLazy",
     config = function()
@@ -22,7 +22,7 @@ local spec = {
             end
             local _, err = vim.ui.open(node:get_id())
             if err then
-              vim.notify.warn(err)
+              vim.notify(err, vim.log.levels.ERROR)
             end
           end,
           copy_path = function(state)
